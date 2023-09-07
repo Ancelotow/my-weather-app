@@ -16,10 +16,10 @@ class MainDto {
   });
 
   factory MainDto.fromJson(Map<String, dynamic> json) => MainDto(
-    temp: double.parse(json["temp"]),
-    feelsLike: double.parse(json["feels_like"]),
-    tempMin: double.parse(json["temp_min"]),
-    tempMax: double.parse(json["temp_max"]),
+    temp: json["temp"],
+    feelsLike: json["feels_like"],
+    tempMin: json["temp_min"],
+    tempMax: json["temp_max"],
     pressure: json["pressure"],
     humidity: json["humidity"],
   );

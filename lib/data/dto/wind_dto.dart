@@ -8,7 +8,7 @@ class WindDto {
   });
 
   factory WindDto.fromJson(Map<String, dynamic> json) => WindDto(
-    speed: double.parse(json["speed"]),
+    speed: json["speed"],
     deg: json["deg"],
   );
 }

@@ -19,7 +19,7 @@ class WeatherApiDataSource implements WeatherDataSource {
 
   @override
   Future<ResponseDto> getFromTownName(String town) async {
-    final response = await _dio.get("weather", queryParameters: {
+    final response = await _dio.get("/weather", queryParameters: {
       "q": town,
     });
     return ResponseDto.fromJson(response.data);

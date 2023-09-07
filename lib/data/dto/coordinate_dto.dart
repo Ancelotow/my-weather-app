@@ -8,7 +8,7 @@ class CoordinateDto {
   });
 
   factory CoordinateDto.fromJson(Map<String, dynamic> json) => CoordinateDto(
-    lon: double.parse(json["lon"]),
-    lat: double.parse(json["lat"]),
+    lon: json["lon"],
+    lat: json["lat"],
   );
 }

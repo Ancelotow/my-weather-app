@@ -25,6 +25,4 @@ class WeatherApiRepository implements WeatherRepository {
     return responses.map((e) => e.toLocation()).toList();
   }
 
-
-
 }

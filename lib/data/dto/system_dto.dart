@@ -17,7 +17,7 @@ class SystemDto {
     type: json["type"],
     id: json["id"],
     country: json["country"],
-    sunrise: DateTime.parse(json["sunrise"]),
-    sunset:  DateTime.parse(json["sunset"]),
+    sunrise: DateTime.now(), // TODO
+    sunset:  DateTime.now(), // TODO
   );
 }

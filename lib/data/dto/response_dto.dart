@@ -16,6 +16,8 @@ class ResponseDto {
   final SystemDto sys;
   final CoordinateDto coord;
 
+  static const double _kelvin = 273.15;
+
   ResponseDto({
     required this.id,
     required this.name,
@@ -31,27 +33,27 @@ class ResponseDto {
         id: json["id"],
         name: json["name"],
         visibility: json["visibility"],
-        weather: WeatherDto.fromJson(json["weather"]),
-        wind: WindDto.fromJson(json["wind"]),
         main: MainDto.fromJson(json["main"]),
-        sys: SystemDto.fromJson(json["sys"]),
+        wind: WindDto.fromJson(json["wind"]),
+        weather: WeatherDto.fromJson(json["weather"][0]),
         coord: CoordinateDto.fromJson(json["coord"]),
+        sys: SystemDto.fromJson(json["sys"]),
       );
 
   Location toLocation() => Location(
-    name: name,
-    latitude: coord.lat,
-    longitude: coord.lon,
-    countryCode: sys.country,
-    weather: WeatherInformation(
-      temperatureCurrent: main.temp,
-      pressure: main.pressure,
-      wind: wind.speed,
-      visibility: visibility,
-      humidity: main.humidity,
-      temperatureMax: main.tempMax,
-      temperatureMin: main.tempMin,
-      weatherName: weather.description,
-    ),
-  );
+        name: name,
+        latitude: coord.lat,
+        longitude: coord.lon,
+        countryCode: sys.country,
+        weather: WeatherInformation(
+          temperatureCurrent:  main.temp - _kelvin,
+          pressure: main.pressure.toInt(),
+          wind: wind.speed,
+          visibility: visibility,
+          humidity: main.humidity.toInt(),
+          temperatureMax: main.tempMax - _kelvin,
+          temperatureMin: main.tempMin - _kelvin,
+          weatherName: weather.description,
+        ),
+      );
 }

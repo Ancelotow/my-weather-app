@@ -3,12 +3,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiService {
 
-  ApiService? _instance;
+  static ApiService? _instance;
   final Dio dio;
   
   ApiService._(this.dio);
 
-  ApiService instance() {
+  static ApiService instance() {
     if(_instance == null) {
       final options = BaseOptions(
         baseUrl: dotenv.env['API_BASE_URI'] ?? "",
